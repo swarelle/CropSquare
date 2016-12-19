@@ -16,6 +16,6 @@ Cropped files will be saved in a folder named "cropped" within your current pict
 	5. Go to Cropper.py in Finder, right click on Cropper.py and copy its pathname (see step 2)
 	6. Open terminal
 	7. If you haven't done so already, run this line without quotations: "pip install Pillow"
-	8. Type "cd " without quotations and paste Cropper.py's pathname
+	8. Type "python " without quotations and paste Cropper.py's pathname
 		e.g. python /Users/your_username/Documents/Cropper.py
 		** Python 2.7 needs to be installed to work

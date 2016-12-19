@@ -3,7 +3,7 @@ Crops images of a culture plate into a tight square at the edges of the plate. U
 
 # Requirements
 - Python 2.7 or above
-- install Pillow library ("pip install Pillow")
+- Installed Pillow library ("pip install Pillow")
 
 # Description:
 Script to crop pictures of plates into nice little squares for further R script analyses.

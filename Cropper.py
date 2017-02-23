@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 __author__ = "Ellen Fu"
-__date__ = "Dec 19, 2016"
+__date__ = "Feb 23, 2017"
 
 """
 Description:
@@ -11,7 +11,7 @@ Cropped files will be saved in a folder named "cropped" within your current pict
 Instructions for Mac:
 	1. Go to folder directly containing the pictures
 	2. Right click on folder, hold alt/option and select 'Copy ___ as pathname'
-	3. Paste the pathname into the single quotations below, SAVE THIS FILE
+	3. Paste the pathname into the single quotations on line 23, SAVE THIS FILE
 	5. Go to Cropper.py in Finder, right click on Cropper.py and copy its pathname (see step 2)
 	6. Open terminal
 	7. If you haven't done so before, run this line without quotations: "pip install Pillow"
@@ -20,7 +20,7 @@ Instructions for Mac:
 		** Python 2.7 needs to be installed to work
 """
 
-file_directory = ''
+file_directory = 'enter directory here'
 
 
 import os
@@ -36,7 +36,7 @@ class Cropper:
 		"""
 		self.manager = FileManager(dir)
 		self.images = self.manager.getImages()
-		self.boundary_value = 200
+		self.boundary_value = 100
 		self.crop()
 
 	def crop(self):
@@ -104,7 +104,7 @@ class Cropper:
 		bottom = radiiY[maxindY][1]
 
 		img2 = img.crop((left, top, right, bottom))
-		print (str(img.name) + " will be cropped at: left = " + str(left) + ", top = " + str(top) + ", right = " + str(right) + ", bottom = " + str(bottom))
+		print((str(img.name), " will be cropped at: left = ", str(left), ", top = ", str(top), ", right = ", str(right), ", bottom = ",str(bottom)))
 		img2.save(self.manager.dir + "/" + img.name, "jpeg")
 
 	def find_x_boundary(self, img, x, y):
@@ -166,7 +166,7 @@ class Cropper:
 
 		return [top, bottom]
 
-			
+
 
 
 
@@ -177,14 +177,14 @@ class FileManager:
 		"""
 		self.files = []
 		self.images = []
-		print("Files: " + str(os.listdir(dir)))
+		print("Files: ", str(os.listdir(dir)))
 		for file in os.listdir(dir):
 			if file.endswith("jpg") or file.endswith("JPG") or file.endswith("jpeg") or file.endswith("JPEG"):
 				self.files.append(file)
 				img = Image.open(os.path.join(dir, file))
 				img.name = file
 				self.images.append(img)
-				print file + ' is added to the queue...'
+				print(file, 'is added to the queue...')
 			else:
 				raise UnexpectedFileException('There''s a non-JPG file in this directory, or there is an invisible .DS_Store file. If the latter case, please create a new folder and move all images to that folder and retry with the new path.')
 
@@ -207,6 +207,6 @@ class UnexpectedFileException(Exception):
 
 
 if __name__ == '__main__':
-	print 'Cropping images...'
+	print('Cropping images...')
 	cropper = Cropper(file_directory)
-	print 'All images cropped!'
+	print('All images cropped!')
